@@ -3,8 +3,8 @@ var mongoose = require("mongoose");
 var userModel = require("../models/userModel");
 var uuidv4 = require("uuid/v4");
 
-/*var bcrypt = require("bcrypt");
-var jwUtils = require("./../utils/jwt.utils.js");*/
+var bcrypt = require("bcrypt");
+var jwUtils = require("../utils/jwt.utils.js");
 
 mongoose.connect("mongodb://localhost/todo",function(err){
     if(err) {
@@ -42,6 +42,28 @@ module.exports = {
                         });
                 } else {
                     return res.status(409).json({"erreur": "utilisateur existe deja"});
+                }
+            })
+    },
+
+    login: function(req, res){
+        var identifiant = req.body.identifiant;
+        var motdepasse  = req.body.motdepasse;
+
+        if(identifiant == null || motdepasse == null){
+            return res.status(400).json({"erreur":"entrez un mot de passe et un identifiant"});
+        }
+        userModel.UserModel.findOne(
+            {identifiant: identifiant}
+        )
+            .then(function(userFound) {
+                if(userFound){
+                    return res.status(200).json({
+                        "_id": userFound._id,
+                        "token": jwUtils.generateTokenForUser(userFound)
+                    });
+                } else {
+                    return res.status(403).json({"erreur":"entrez un mot de passe et un identifiant"});
                 }
             })
     }

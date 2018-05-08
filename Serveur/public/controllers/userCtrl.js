@@ -7,4 +7,12 @@ app.controller('UserCtrl',["$scope", "$http", 'UserService', function($scope, $h
             });
         }
     };
+    $scope.login = function(){
+        if($scope.loginL && $scope.passwordL ){
+            UserService.login($scope.loginL, $scope.passwordL, function(resp){
+                console.log(resp);
+                alert("connecté");
+            });
+        }
+    };
 }]);

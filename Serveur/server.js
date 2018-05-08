@@ -21,6 +21,7 @@ app.use(function (req,res,next){
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use("/api/", apiRouter);
 
 console.log("Serveur démarré sur le port "+port);
 

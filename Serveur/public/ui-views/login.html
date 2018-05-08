@@ -1,7 +1,7 @@
 <h1>Se Connecter</h1>
-<form ng-submit="findUser()">
-    <input type="text" placeholder="identifiant"></input>
-    <input type="password" placeholder="mot de passe"></input>
+<form ng-submit="login()">
+    <input type="text" ng-model="loginL" placeholder="identifiant"></input>
+    <input type="password" ng-model="passwordL" placeholder="mot de passe"></input>
     <button>Connexion</button>
 </form>
 
