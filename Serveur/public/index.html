@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="app">
+    <head>
+        <meta charset="utf-8" content="text/html" http-equiv="Content-Type"/>
+        <title>Ma page</title>
+        <link rel="stylesheet" href="css/style.css"/>
+    </head>
+
+    <body>
+        
+        <img src="img/title.png"/>
+        <ui-view>
+            <h1>Que voulez-vous faire ?</h1>
+            <a class="signup" ui-sref="login" ui-sref-active="active" >Se connecter</a>
+            <a class="signup" ui-sref="signup" ui-sref-active="active">Creer un compte</a>
+        </ui-view>
+
+        <script src="angularJs/angular.min.js"></script>
+        <script src="angularJs/angular-ui-router.js"></script>
+        
+        <script src="routingApp/RoutingApp.js"></script>
+        <script src="controllers/UserCtrl.js"></script>
+        <script src="controllers/TodoCtrl.js"></script>
+        <script src="factory/UserService.js"></script>
+    </body>
+</html>

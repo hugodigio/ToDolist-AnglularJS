@@ -1,0 +1,59 @@
+ion-content{
+    background-color: #ecf0f1;
+    text-align: center;
+}
+
+img{
+    max-width: 100%;
+    max-height: 150px;
+}
+
+input, button, a.signup{
+    display: block;
+    width: 300px;
+    margin: 10px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    border: 0px solid grey;
+}
+
+input{
+    background-color: white;
+}
+
+button{
+    background-color: #2980b9;
+    color: white;
+    font-weight: bold;
+    margin-top: 40px;
+    transition: 0.2s;
+}
+
+button:hover{
+    background-color: #4fb6fa;
+    -ms-transform-origin: 50% 50%;
+    -ms-transform: scale(0.95,0.95);
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transform: scale(0.95,0.95);
+    transform-origin: 50% 50%;
+    transform: scale(0.95,0.95);
+}
+
+div.signup{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+}
+
+.scroll{
+   height: 90vh; 
+}
+span.signup{
+    display: inline;
+}
+
+a.signup{
+    background-color: #27ae60;
+    text-decoration: none;
+    color: white;
+}

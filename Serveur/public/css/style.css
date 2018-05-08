@@ -1,0 +1,125 @@
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+
+body{
+    width: 70%;
+    text-align: center;
+    margin: auto;
+    background-color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+}
+
+div.done{
+    background: #bdc3c7;
+}
+
+span.done {
+    text-decoration: line-through;
+    color:rgb(150, 150, 150)
+}
+
+img{
+    max-width: 100%;
+    max-height: 150px;
+    margin-bottom: 20px;
+}
+
+input, button, a.signup{
+    display: block;
+    width: 300px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 10px 15px 10px 15px;
+    border-radius: 5px;
+    border: 0px solid grey;
+}
+
+input{
+    background-color: white;
+}
+
+button, a.signup{
+    background-color: #2980b9;
+    color: white;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+button:hover, a.signup:hover{
+    background-color: #4fb6fa;
+    -ms-transform-origin: 50% 50%;
+    -ms-transform: scale(0.95,0.95);
+    -webkit-transform-origin: 50% 50%;
+    -webkit-transform: scale(0.95,0.95);
+    transform-origin: 50% 50%;
+    transform: scale(0.95,0.95);
+}
+
+div.signup{
+    position: absolute;
+    bottom: 0px;
+    width: 70%;
+}
+
+span.signup{
+    display: inline;
+}
+
+a.signup{
+    background-color: #27ae60;
+    text-decoration: none;
+    color: white;
+}
+
+
+/* list.html */
+
+form.addTask > input{
+    display: inline-block;
+    width: 60%;
+}
+
+form.addTask > button{
+    display: inline-block;
+    width: 20%;
+}
+
+div.list-element {
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey; 
+    padding-left: 20px;
+    padding-right: 20px; 
+}
+
+.list-element > input, .list-element > button {
+    display: inline-block;
+}
+
+.list-element > button {
+    width: 100px;
+    background-color: #e74c3c;
+}
+.list-element > button:hover {
+    background-color: #c0392b;
+}
+
+.list-element > input {
+    width: 20px;
+}
+
+.list-element > span {
+    display: inline-block;
+    width: calc( 100% - 130px);
+}
+
+.logout{
+    background-color: #e74c3c;
+    width: 100px;
+    margin: 20px 0 0 0;
+}
+
+.logout:hover{
+    background-color: #c0392b;
+}
