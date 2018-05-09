@@ -52,7 +52,7 @@ app.controller('TodoCtrl',["$scope", "$http", 'TodoService', function($scope, $h
     };
 
     $scope.load = function(){
-        TodoService.getTaskSet(function(res){
+        TodoService.getTasks(function(res){
             $scope.taskList = res;
         });
     };
