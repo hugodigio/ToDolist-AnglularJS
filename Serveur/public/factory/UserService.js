@@ -12,7 +12,7 @@ app.factory('UserService',['$http',function($http){
                      cb(resp);
                  })
                  .catch(function(err){
-                     alert(err.data.error);
+                     alert(err.data.erreur);
                  })
     };
 
@@ -27,7 +27,7 @@ app.factory('UserService',['$http',function($http){
                  cb(resp);
              })
              .catch(function(err){
-                 alert("erreur !"+err.data.error);
+                 alert(err.data.erreur);
              })
 };
 

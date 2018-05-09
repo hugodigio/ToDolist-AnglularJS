@@ -54,7 +54,8 @@ module.exports = {
             return res.status(400).json({"erreur":"entrez un mot de passe et un identifiant"});
         }
         userModel.UserModel.findOne(
-            {identifiant: identifiant}
+            {identifiant: identifiant},
+            {motdepasse: motdepasse}
         )
             .then(function(userFound) {
                 if(userFound){
@@ -63,8 +64,30 @@ module.exports = {
                         "token": jwUtils.generateTokenForUser(userFound)
                     });
                 } else {
-                    return res.status(403).json({"erreur":"entrez un mot de passe et un identifiant"});
+                    return res.status(403).json({"erreur":"identifiant ou mot de passe incorrect"});
                 }
             })
+    },
+
+    getUserProfile: function(req, res){
+        var headerAuth = req.headers["authorization"];
+        var userId     = jwUtils.getUserProfile(headerAuth);
+
+        if (userId < 0){
+            return res.status(400).json({"error": "wrong token"});
+        }
+
+        userModel.UserModel.findOne({
+            attributes: ["_id","identifiant"],
+            where: {_id: userId}
+        }).then(function(user){
+            if(user){
+                res.status(201).json(user);
+            }else{
+                res.status(404).json({"erreur":"user not found"});
+            }
+        }).catch(function(err){
+            res.status(500).json({"erreur":"cannot fetch user"});
+        })
     }
 };
