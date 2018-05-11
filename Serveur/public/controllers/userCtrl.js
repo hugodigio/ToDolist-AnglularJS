@@ -12,6 +12,7 @@ app.controller('UserCtrl',["$scope", "$http", "$state", 'UserService', function(
             UserService.login($scope.loginL, $scope.passwordL, function(resp){
                 console.log(resp);
                 setCookie("token", resp.data.token, 1);
+                setCookie("name",$scope.loginL);
                 alert("connecté");
                 $state.go("todo");
             });

@@ -1,4 +1,6 @@
 
+    <button style="background-color: #e74c3c" ui-sref="login" onclick="deleteCookie('token')">Se déconnecter</button>
+    <h1> Bienvenue {{getName()}} ! </h1>
     <form class="addTask" ng-submit="addTask()">
         <input type="text" ng-model="taskInputName" placeholder="Décrire ici la tâche a effectuer"/>
         <button type="submit">Valider</button>

@@ -54,11 +54,11 @@ module.exports = {
             return res.status(400).json({"erreur":"entrez un mot de passe et un identifiant"});
         }
         userModel.UserModel.findOne(
-            {identifiant: identifiant},
-            {motdepasse: motdepasse}
+            {identifiant: identifiant}
         )
             .then(function(userFound) {
-                if(userFound){
+                console.log("mot de passe: "+userFound.motdepasse+"\nmot de passe donné: "+ motdepasse)
+                if(userFound && userFound.motdepasse == motdepasse){
                     return res.status(200).json({
                         "_id": userFound._id,
                         "token": jwUtils.generateTokenForUser(userFound)

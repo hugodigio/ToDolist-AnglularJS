@@ -53,6 +53,8 @@ module.exports = {
         var token = req.body.token;
         var identifiant = jwtUtils.getUserId(token);
 
+        console.log("identifiant: "+identifiant);
+
         if(identifiant < 0){
             return res.status(401).json({ 'error': 'vous devez vous connecter, votre token a expiré' });
         }
@@ -102,7 +104,7 @@ module.exports = {
         )
             .then(function () {
                 console.log("tâche supprimée"); //affD
-                return res.status(200).json({'succes': true});
+                return res.status(200).json({'success': true});
             });
 
     }

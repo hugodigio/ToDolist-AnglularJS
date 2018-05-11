@@ -1,6 +1,14 @@
 app.factory('TodoService',['$http',function($http){
     var server = {};
     
+    server.getName = function(cb){
+        var req = {token : getCookie("token")};
+        $http.post('/api/todo/getName',req)
+            .then(function(res){
+                cb(res);
+            });
+    }
+
     server.addTask = function (todoname, cb) {
         var req = {
             token:getCookie("token"),

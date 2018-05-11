@@ -1,5 +1,11 @@
+
+
 app.controller('TodoCtrl',["$scope", "$http", 'TodoService', function($scope, $http, TodoService){
     $scope.taskList = [];
+
+    $scope.getName = function(){
+        return getCookie("name");
+    }
 
     $scope.howManyDone = function(){
         count = 0;
