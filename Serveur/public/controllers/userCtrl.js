@@ -11,7 +11,6 @@ app.controller('UserCtrl',["$scope", "$http", "$state", 'UserService', function(
         if($scope.loginL && $scope.passwordL ){
             UserService.login($scope.loginL, $scope.passwordL, function(resp){
                 console.log(resp);
-                alert("token: "+resp.data.token);
                 setCookie("token", resp.data.token, 1);
                 alert("connecté");
                 $state.go("todo");

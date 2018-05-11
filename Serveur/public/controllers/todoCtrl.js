@@ -42,7 +42,6 @@ app.controller('TodoCtrl',["$scope", "$http", 'TodoService', function($scope, $h
         $scope.taskList.splice(index,1);
 
         TodoService.deleteTask(task._id, function(res){
-            console.log(todo);
             $scope.load();
         });
     };
@@ -52,8 +51,12 @@ app.controller('TodoCtrl',["$scope", "$http", 'TodoService', function($scope, $h
     };
 
     $scope.load = function(){
-        TodoService.getTasks(function(res){
-            $scope.taskList = res;
+        TodoService.getTaskSet(function(res){
+            $scope.taskList = [];
+                // On remplie taskList
+            res.data.forEach(function (tache) {
+                $scope.taskList.push(tache);
+            });
         });
     };
 

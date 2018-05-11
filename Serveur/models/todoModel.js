@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var TodoSchema = Schema({
     _id:String,
     name:String,
-    _id_user:String,
+    identifiant:String,
     done:Boolean
 })
 

@@ -9,8 +9,8 @@ exports.router = (function(){
     apiRouteur.route("/users/login/").post(usersCtrl.login);
     apiRouteur.route("/users/getUser/").get(usersCtrl.getUserProfile);
 
-    apiRouteur.route("/todo/getTasks").post(todoCtrl.getTasks);
-    apiRouteur.route("/todo/deleteTask").post(todoCtrl.deleteTaskById);
+    apiRouteur.route("/todo/getTaskSet").post(todoCtrl.getTaskSet);
+    apiRouteur.route("/todo/deleteTask").post(todoCtrl.deleteTask);
     apiRouteur.route("/todo/updateTask").post(todoCtrl.updateTask);
     apiRouteur.route("/todo/addTask").post(todoCtrl.addTask);
 

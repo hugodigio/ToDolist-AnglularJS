@@ -1,65 +1,109 @@
 var mongoose = require("mongoose");
 
-var TodoModel = require("../models/todoModel");
+var todoModel = require("../models/todoModel");
+var userModel = require("../models/userModel");
+
 var uuidv4 = require("uuid/v4");
 
-var jwUtils = require("../utils/jwt.utils.js");
+var jwtUtils = require("../utils/jwt.utils.js");
 
 module.exports = {
-    getTasks: function(cb){
-        TodoModel.find(null, function (err, taskset) {
-            if(err){
-                throw err;
-            }else{
-                cb(taskset);
-            }
-        });
-    },
+    addTask: function(req, res) {
+        //var headerAuth = req.header['authorization'];
+        var token = req.body.token;
+        var identifiant = jwtUtils.getUserId(token);
+        console.log("token : " + token);    // affD
 
-    findTaskById: function(id, cb){
-        TodoModel.findById(id,function(err, task){
-            if(err){
-                throw err;
-            }else{
-                if(task!=null){
-                    cb();
+        var name = req.body.todoname;
+
+
+        // On vérifie que le nom et le token ne sont pas vides
+        if(name == null) {
+            return res.status(400).json({ 'error': 'nom de tâche vide' });
+        }
+        if(identifiant < 0) {
+            return res.status(401).json({ 'error': 'vous devez vous connecter, votre token a expiré' });
+        }
+
+        userModel.UserModel.findOne(
+            { '_id': identifiant },
+            {motdepasse: 0}
+        )
+            .then(function(userFound) {
+                if(userFound) {
+                    var newTask = new todoModel.TodoModel({
+                        _id: uuidv4(),
+                        identifiant: identifiant,
+                        name: name,
+                        done: false});
+
+                    newTask.save()
+                        .then(function() {
+                        console.log('tache ajoutée pour le user ' + userFound.nomUti);
+                        return res.status(201).json({ '_id': newTask._id });
+                    });
                 }
-            }
-        });
+                else {
+                    res.status(404).json({ 'error': 'utilisateur non trouvé' });
+                }
+            });
     },
 
-    updateTask: function(task, cb){
-        TodoModel.findByIdAndUpdate(task.id, task, function(err, task){
-            if(err){
-                throw err;
-            }else{
-                cb();
-            }
-        });
+    getTaskSet: function(req, res) {
+        var token = req.body.token;
+        var identifiant = jwtUtils.getUserId(token);
+
+        if(identifiant < 0){
+            return res.status(401).json({ 'error': 'vous devez vous connecter, votre token a expiré' });
+        }
+        // On recupere les taches de l'utilisateur
+        todoModel.TodoModel.find(
+            {'identifiant': identifiant}
+        )
+            .then(function (tasks) {
+                return res.status(200).json(tasks);
+            });
+
     },
 
-    addTask: function(task, cb){
-        var taskToSave = new TodoModel({
-            _id:task.id,
-            name:task.name,
-            done:task.done
-        });
-        taskToSave.save(function(err){
-            if(err){
-                throw err;
-            }else{
-                cb();
-            }
-        });
+    updateTask: function(req, res) {
+        var token = req.body.token;
+        var _id = req.body.task._id;
+        // On a déjà l'id de l'utilisateur dans la tache, mais ici on regarde le token
+        var identifiant = jwtUtils.getUserId(token);
+
+        var task = req.body.task;
+        if(identifiant < 0){
+            return res.status(401).json({ 'error': 'vous devez vous connecter, votre token a expiré' });
+        }
+
+        todoModel.TodoModel.updateOne(
+            {_id: _id, identifiant: identifiant},
+            task
+        )
+            .then(function () {
+                console.log("tâche modifiée");      // affD
+                return res.status(200).json({'id': task._id});
+            });
     },
 
-    deleteTaskById: function(id, cb){
-        TodoModel.findByIdAndRemove(id, function(err, todo){
-            if (err){
-                throw err;
-            }else{
-                cb();
-            }
-        });
+    deleteTask: function(req, res) {
+        var token = req.body.token;
+        var _id = req.body._id;
+        // On a déjà l'id de l'utilisateur dans la tache, mais ici on regarde le token
+        var identifiant = jwtUtils.getUserId(token);
+
+        if(identifiant < 0){
+            return res.status(401).json({ 'error': 'vous devez vous connecter, votre token a expiré' });
+        }
+
+        todoModel.TodoModel.remove(
+            {_id: _id, identifiant: identifiant}
+        )
+            .then(function () {
+                console.log("tâche supprimée"); //affD
+                return res.status(200).json({'succes': true});
+            });
+
     }
 }
