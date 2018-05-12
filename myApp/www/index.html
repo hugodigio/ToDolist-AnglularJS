@@ -37,17 +37,16 @@
     <!--<script src="js/angular.min.js"></script>-->
     <script src="js/angular-ui-router.js"></script>
 
+    <script src="config.js"></script>
     <script src="js/cookies.js"></script>
     <script src="js/routingApp/RoutingApp.js"></script>
     <script src="js/controllers/UserCtrl.js"></script>
     <script src="js/controllers/TodoCtrl.js"></script>
     <script src="js/factory/UserService.js"></script>
     <script src="js/factory/TodoService.js"></script>
+    
   </head>
   <body ng-app="starter">
-
-    <ion-pane>
-      <ion-content>
           
         <img src="img/title.png"/>
         <ui-view>
@@ -56,8 +55,5 @@
             <a class="signup" ui-sref="signup" ui-sref-active="active">Creer un compte</a>
         </ui-view>
         
-          
-      </ion-content>
-    </ion-pane>
   </body>
 </html>

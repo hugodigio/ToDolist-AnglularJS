@@ -7,7 +7,7 @@ app.factory('UserService',['$http',function($http){
                 motdepasse: password
             };
 
-            $http.post("/api/users/register",req)
+            $http.post(config.serverip+"/api/users/register",req)
                  .then(function(resp){
                      cb(resp);
                  })
@@ -22,7 +22,7 @@ app.factory('UserService',['$http',function($http){
             motdepasse: password
         };
 
-        $http.post("/api/users/login",req)
+        $http.post(config.serverip+"/api/users/login",req)
              .then(function(resp){
                  cb(resp);
              })

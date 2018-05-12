@@ -1,6 +1,13 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:300');
 
+body{
+    text-align: center;
+    margin: auto;
+    background-color: #ecf0f1;
+    font-family: 'Roboto', sans-serif;
+}
+
 div.done{
     background: #bdc3c7;
 }
@@ -52,7 +59,7 @@ button:hover, a.signup:hover{
 div.signup{
     position: absolute;
     bottom: 0px;
-    width: 70%;
+    width: 100%;
 }
 
 span.signup{

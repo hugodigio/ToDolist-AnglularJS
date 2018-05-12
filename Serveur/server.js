@@ -4,10 +4,11 @@ var bodyParser = require("body-parser");
 var apiRouter = require("./apiRouteur").router;
 
 var userLayer = require("./routes/userLayer");
-/*var todolayer = require("./routes/todoLayer");*/
+var todolayer = require("./routes/todoLayer");
+require("./config-server");
 
 var app = express();
-var port = 8095; //TODO mettre dans un fichier de paramètres
+var port = config.serverPort; //TODO mettre dans un fichier de paramètres
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());

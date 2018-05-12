@@ -5,12 +5,14 @@ var uuidv4 = require("uuid/v4");
 
 var bcrypt = require("bcrypt");
 var jwUtils = require("../utils/jwt.utils.js");
+require("../config-server");
 
-mongoose.connect("mongodb://localhost/todo",function(err){
+console.log("connexion à la base de donnée: "+config.bdTableAddress+" ...")
+mongoose.connect(config.bdTableAddress,function(err){
     if(err) {
         throw err;
     } else{
-        console.log('mongo connected');
+        console.log('Base de données connectée');
     }
 });
 
@@ -57,7 +59,6 @@ module.exports = {
             {identifiant: identifiant}
         )
             .then(function(userFound) {
-                console.log("mot de passe: "+userFound.motdepasse+"\nmot de passe donné: "+ motdepasse)
                 if(userFound && userFound.motdepasse == motdepasse){
                     return res.status(200).json({
                         "_id": userFound._id,

@@ -3,7 +3,7 @@ app.factory('TodoService',['$http',function($http){
     
     server.getName = function(cb){
         var req = {token : getCookie("token")};
-        $http.post('/api/todo/getName',req)
+        $http.post(config.serverip+'/api/todo/getName',req)
             .then(function(res){
                 cb(res);
             });
@@ -15,7 +15,7 @@ app.factory('TodoService',['$http',function($http){
             todoname:todoname
         };
         console.log(req);
-        $http.post('/api/todo/addTask', req)
+        $http.post(config.serverip+'/api/todo/addTask', req)
             .then(function (res) {
                 cb(res);
             });
@@ -26,7 +26,7 @@ app.factory('TodoService',['$http',function($http){
             _id: id,
             token: getCookie("token")
         };
-        $http.post('/api/todo/deleteTask', req)
+        $http.post(config.serverip+'/api/todo/deleteTask', req)
             .then(function(res){
                 cb(res);
             });
@@ -38,7 +38,7 @@ app.factory('TodoService',['$http',function($http){
             task:task,
             token: getCookie("token")
         };
-        $http.post('/api/todo/updateTask', req)
+        $http.post(config.serverip+'/api/todo/updateTask', req)
             .then(function(res){
                 cb(res);
             });
@@ -48,7 +48,7 @@ app.factory('TodoService',['$http',function($http){
         var req = {
             token: getCookie("token")
         }
-        $http.post('/api/todo/getTaskSet', req)
+        $http.post(config.serverip+'/api/todo/getTaskSet', req)
             .then(function (res) {
                 console.log(res);
                 cb(res);
