@@ -1,0 +1,18 @@
+
+    <button style="background-color: #e74c3c" ui-sref="login" onclick="deleteCookie('token')">Se déconnecter</button>
+    <h1> Bienvenue {{getName()}} ! </h1>
+    <form class="addTask" ng-submit="addTask()">
+        <input type="text" ng-model="taskInputName" placeholder="Décrire ici la tâche a effectuer"/>
+        <button type="submit">Valider</button>
+    </form>
+
+
+    <div>
+        <h2 style="text-align: start">Mes Todos ({{howManyDone()}} sur {{taskList.length}})</h2>
+        <div ng-class="{done:task.done}" class="list-element" ng-repeat="task in taskList track by $index" >
+            <input type="checkbox" ng-model="task.done" ng-click="update(task)"/>
+            <span ng-class="{done:task.done}">{{ task.name }}</span>
+            <button ng-click="delete(task)">Supprimer</button>
+        </div>
+    </div>
+
