@@ -40,7 +40,7 @@ Modifiez la valeur du port dans le fichier  **./server/config-server.json**
 Modifiez l'adresse ip du serveur MongoDB dans le fichier **./server/config-server.js**
 
 
-### Application Mobile
+### Application Mobile ionic
 
 Pour changer l'adresse IP du serveur node utilisé par l'application, modifiez l'adresse ip dans le fichier
 **./MyApp/www/config.js**
