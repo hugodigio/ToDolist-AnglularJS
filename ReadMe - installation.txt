@@ -1,9 +1,9 @@
 			#Installation et configuration de l'application
 
 
-## Base de données
+## Base de donnÃ©es
 
-- Vous devez disposer d'une base de donnée MongoDB.
+- Vous devez disposer d'une base de donnÃ©e MongoDB.
 
 commande pour lancer un serveur MongoDB:
 > Mongod
@@ -11,10 +11,10 @@ commande pour lancer un serveur MongoDB:
 
 ##Mise en place du serveur node
 
-	### Installation des modules nécéssaires 
+	### Installation des modules nÃ©cÃ©ssaires 
 
-- pour que le serveur node démarre correctement, vous devez installer des modules
-complémentaires, à l'aide des commandes suivantes:
+- pour que le serveur node dÃ©marre correctement, vous devez installer des modules
+complÃ©mentaires, Ã  l'aide des commandes suivantes:
 
 > npm install express
 
@@ -33,7 +33,7 @@ complémentaires, à l'aide des commandes suivantes:
 ## Configuration (IP et Ports)
 
 
-	### Configurer port utilisé par le serveur
+	### Configurer port utilisÃ© par le serveur
 
 Modifiez la valeur du port dans le fichier  ** ./server/config-server.json **
 
@@ -43,18 +43,18 @@ Modifiez la valeur du port dans le fichier  ** ./server/config-server.json **
 Modifiez l'adresse ip du serveur MongoDB dans le fichier ** ./server/config-server.js **
 
 
-	### Application Mobile
+	### Application Mobile ionic
 
-Pour changer l'adresse IP du serveur node utilisé par l'application, modifiez l'adresse ip dans le fichier
+Pour changer l'adresse IP du serveur node utilisÃ© par l'application, modifiez l'adresse ip dans le fichier
 ** ./MyApp/www/config.js **
 
 
 ## Ouvrir l'application
 
-Vous pouvez accéder à l'application via votre navigateur web en entrant l'addresse du 
+Vous pouvez accÃ©der Ã  l'application via votre navigateur web en entrant l'addresse du 
 serveur Node ainsi que son port.
 
-par défaut:
+par dÃ©faut:
 [http://localhost:8095/](http://localhost:8095/)
 
 
