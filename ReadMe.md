@@ -1,5 +1,4 @@
-#Installation et configuration de l'application
-
+# Installation et configuration de l'application
 
 ## Base de données
 Vous devez disposer d'une base de donnée MongoDB.
@@ -8,7 +7,7 @@ commande pour lancer un serveur MongoDB:
 > Mongod
 
 
-##Mise en place du serveur node
+## Mise en place du serveur node
 
 ### Installation des modules nécéssaires 
 
