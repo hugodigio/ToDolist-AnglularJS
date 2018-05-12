@@ -32,18 +32,18 @@ complémentaires, à l'aide des commandes suivantes:
 
 ### Configurer port utilisé par le serveur
 
-Modifiez la valeur du port dans le fichier  ** ./server/config-server.json **
+Modifiez la valeur du port dans le fichier  **./server/config-server.json**
 
 
 ### Configuer l'adresse IP du serveur MongoDB
 
-Modifiez l'adresse ip du serveur MongoDB dans le fichier ** ./server/config-server.js **
+Modifiez l'adresse ip du serveur MongoDB dans le fichier **./server/config-server.js**
 
 
 ### Application Mobile
 
 Pour changer l'adresse IP du serveur node utilisé par l'application, modifiez l'adresse ip dans le fichier
-** ./MyApp/www/config.js **
+**./MyApp/www/config.js**
 
 
 ## Ouvrir l'application
