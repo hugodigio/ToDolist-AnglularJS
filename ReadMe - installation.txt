@@ -28,6 +28,8 @@ complémentaires, à l'aide des commandes suivantes:
 
 > npm install bcrypt
 
+> npm install jsonwebtoken
+
 
 
 ## Configuration (IP et Ports)
